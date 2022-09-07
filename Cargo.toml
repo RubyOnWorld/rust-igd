@@ -43,12 +43,6 @@ default = []
 name = "add_any_port"
 
 [[example]]
-name = "add_port"
-
-[[example]]
-name = "add_remove"
-
-[[example]]
 name = "aio"
 required-features = ["aio"]
 
