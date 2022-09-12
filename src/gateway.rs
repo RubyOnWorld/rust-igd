@@ -42,6 +42,31 @@ impl Gateway {
             "GetExternalIPAddressResponse",
         ))
     }
+    
+    }
+
+impl Frame<()> {
+    pub(crate) fn into_data(self) -> Frame<Data> {
+        Frame {
+            header: self.header.into_data(),
+            body: self.body,
+        }
+    }
+
+    pub(crate) fn into_window_update(self) -> Frame<WindowUpdate> {
+        Frame {
+            header: self.header.into_window_update(),
+            body: self.body,
+        }
+    }
+
+    pub(crate) fn into_ping(self) -> Frame<Ping> {
+        Frame {
+            header: self.header.into_ping(),
+            body: self.body,
+        }
+    }
+}
 
     /// Get an external socket address with our external ip and any port. This is a convenience
     /// function that calls `get_external_ip` followed by `add_any_port`
